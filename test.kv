@@ -1,0 +1,16 @@
+<TestW>:
+	FloatLayout:
+		Button:
+			text:'Hej'
+			id: b1
+			size_hint: .1, .1
+			pos: root.width *  .5, root.height*.5
+			on_press: root.cVisible()
+		Button:
+			text:'Hej2'
+			id: b2
+			size_hint: .1, .1
+			pos: root.width *  .5, root.height*.6
+			visible: True
+		Label:
+			text: b2.text
