@@ -72,39 +72,16 @@ class TestApp(App):
 class InterfaceManager(FloatLayout):
 	def __init__(self, **kwargs):
 		super(InterfaceManager, self).__init__(**kwargs)
-
-		#self.first = Button(text="First")
-		#self.first.bind(on_press=self.show_second)
-
-		#self.second = Button(text="Second")
-		#self.second.bind(on_press=self.show_final)
-
-		#self.final = Label(text="Hello World")
-
-
-		''' Here it ends'''
-		#self.readyPl(self, 2)
 		self.FirstWidget()
-	def CHPL(self,button):
-		self.clear_widgets()
-		self.add_widget(self.second)
 
 
-	'''
-	def show_second(self, button):
-		self.clear_widgets()
-		self.add_widget(self.second)
-
-	def show_final(self, button):
-		self.clear_widgets()
-		self.add_widget(self.final)
-	'''
 	def modPl(self, *args):
+		'''This is the player changing method'''
 		self.Players = args[0]
 		args[1].text=str(args[0])
 
 	def readyPl(self, *args):
-		#This works ! :)
+		'''When number of players are chosen switch widget'''
 		if self.Players>0:
 			self.SecondWidget()
 		else:
@@ -135,6 +112,8 @@ class InterfaceManager(FloatLayout):
 		self.add_widget(self.btn_ready)
 
 	def SecondWidget(self, *args):
+		'''Switch to this widget when number of players are chosen
+		'''
 		self.canvas.clear()
 		#args[0].add_widget(args[0].second)
 		'''with self.canvas:
@@ -152,11 +131,15 @@ class InterfaceManager(FloatLayout):
 		self.add_widget(self.lbl_Y)	
 
 	def UpdateXY(self, *args):
+		'''Update xy labels'''
 		self.lbl_X.text='x: ' + str(args[0]['x'])
 		self.lbl_Y.text='y: ' + str(args[0]['y'])
 		#self.lbl_X.text=args[0][0]
 
 class tButton(Button):
+	'''This button is actually a background, and lets players place other 
+	buttons that is drawn on
+	'''
 	def __init__(self, instance, **xargs):
 		super(tButton, self).__init__(**xargs)
 		self.instance = instance
@@ -197,6 +180,16 @@ class tButton(Button):
 			Color=[1.,0,0]
 			self.rect = Rectangle(pos=[touch.x, touch.y], size_hint=[.1, .1])
 	'''
+
+
+
+class DrawButton(Button):
+	'''This button shall be drawn on
+	'''
+	def __init__(self, instance, **xargs):
+		super(tButton, self).__init__(**xargs)
+		self.instance = instance
+
 
 class StencilTestWidget(StencilView):
 	'''Drag to define stencil area
